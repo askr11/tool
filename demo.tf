@@ -126,5 +126,5 @@ resource "local_file" "hosts" {
       ubuntu_hosts = module.ec2.ips
     }
   )
-  filename = "./inventory"
+  filename = "./inventory.yml"
 }
