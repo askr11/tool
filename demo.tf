@@ -123,7 +123,7 @@ resource "aws_security_group" "private_subnet_sg" {
 resource "local_file" "hosts" {
   content = templatefile("inventory.tmpl",
     {
-      ubuntu_hosts = module.ec2.*.public_ip_address
+      ubuntu_hosts = module.ec2.ips
     }
   )
   filename = "./inventory"
