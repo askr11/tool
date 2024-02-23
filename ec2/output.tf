@@ -1,3 +1,3 @@
 output "ips"{
-
+value = "aws
 }
