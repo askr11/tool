@@ -1,3 +1,3 @@
 output "ips"{
-value = "aws
+value = "aws_instance.aws.[*].public_ips
 }
