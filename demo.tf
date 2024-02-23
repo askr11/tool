@@ -120,3 +120,11 @@ resource "aws_security_group" "private_subnet_sg" {
     cidr_blocks = var.all
   }
 }
+resource "local_file" "hosts" {
+  content = templatefile("inventory.tmpl",
+    {
+      ubuntu_hosts = module.ec2.*.public_ip_address
+    }
+  )
+  filename = "./inventory"
+}
