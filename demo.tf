@@ -72,7 +72,12 @@ resource "local_file" "tf-key" {
   content  = tls_private_key.rsa.private_key_pem
   filename = "./keyins.pem"  # Provide the desired path and file name with .pem extension
 }
-
+resource "null_resource" "change_permissions" {
+  provisioner "local-exec" {
+    command = "chmod 600 ./keyins.pem"
+  }
+  depends_on = [local_file.tf-key]
+}
 resource "aws_security_group" "allow_all" {
   name        = "allow-all-traffic"
   description = "Allow all traffic"
