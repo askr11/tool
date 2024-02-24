@@ -9,7 +9,7 @@ pdr=["10.8.0.0/25", "10.8.0.128/25"]
 #private subnet name
 priname= ["ninja-pri-sub-01", "ninja-pri-sub-02"]
 #ami id of instance
-am="ami-06aa3f7caf3a30282"
+am="ami-0a7cf821b91bcccbc"
 #gateway name
 gateway_name = "ninja-igw-01"
 
