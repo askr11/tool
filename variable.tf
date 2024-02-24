@@ -34,3 +34,7 @@ variable "gateway_name"{
 variable "all"{
     type=list(string)
 }
+variable "sshdr"{
+    type=list(string)
+   # default="10.2.2.0/18"
+}
