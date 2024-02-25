@@ -19,6 +19,7 @@ name=var.nam
 module "subnet"{
   source= "./subnet"
   len=length(var.sdr)
+  az=var.avail_zone
   vpcid=module.vpc2.vpc-id
   pub_subnet-cidr=var.sdr
   pri_subnet-cidr=var.pdr
