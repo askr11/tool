@@ -3,7 +3,12 @@
 ${ip}
 %{ endfor ~}
 
-[all:vars]
+[bastion]
+%{ for ip in bastion_hosts ~}
+${ip}
+%{ endfor ~}
+
+[ubuntu_nodes:vars]
 ansible_ssh_private_key_file=/var/lib/jenkins/workspace/tool/keyins.pem
 ansible_user=ubuntu
-ansible_ssh_common_args='-o ProxyJump=bastion_user@bastion_host'
+ansible_ssh_common_args='-o ProxyJump=ubuntu@{{bastion_hosts}}'
