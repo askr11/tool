@@ -6,7 +6,7 @@ ${ip}
 
 [ubuntu_nodes]
 %{ for index, ip in ubuntu_hosts ~}
-ubuntu_node${index} ansible_host=${ip} ansible_ssh_common_args='-o ProxyJump=bastion_user@${bastion_hosts[index]}'
+ubuntu_node${index} ansible_host=${ip} ansible_ssh_common_args='-o ProxyJump=${bastion_user}@${bastion_hosts[index]}'
 %{ endfor ~}
 
 
