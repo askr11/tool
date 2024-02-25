@@ -6,3 +6,4 @@ ${ip}
 [all:vars]
 ansible_ssh_private_key_file=/var/lib/jenkins/workspace/tool/keyins.pem
 ansible_user=ubuntu
+ansible_ssh_common_args='-o ProxyJump=bastion_user@bastion_host'
