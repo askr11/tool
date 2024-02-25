@@ -38,6 +38,9 @@ variable "sshdr"{
     type=list(string)
    # default="10.2.2.0/18"
 }
+variable "bastionuser"{
+type=string
+}
 
 variable "avail_zone"{
 type=list(string)
