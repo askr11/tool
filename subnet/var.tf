@@ -27,3 +27,6 @@ variable "prinaam" {
   type = list(string)
 
 }
+variable "az" {
+type=list(string)
+}
