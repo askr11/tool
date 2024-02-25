@@ -13,4 +13,5 @@ ubuntu_node${index} ansible_host=${ip} ansible_ssh_common_args='-o ProxyJump=bas
 [all:vars]
 ansible_ssh_private_key_file=/var/lib/jenkins/workspace/tool/keyins.pem
 ansible_user=ubuntu
+bastion_user=ubuntu
 
