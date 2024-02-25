@@ -131,6 +131,7 @@ resource "local_file" "hosts" {
     {
       ubuntu_hosts = module.ec2.ips
       bastion_hosts= module.ec2.bips
+      bastion_user   = var.bastionuser
     }
   )
   filename = "./inventory.yml"
