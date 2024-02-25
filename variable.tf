@@ -38,10 +38,7 @@ variable "sshdr"{
     type=list(string)
    # default="10.2.2.0/18"
 }
-variable "ssh_block"{
-    type=string
-   # default="10.2.2.0/18"
-}
+
 variable "avail_zone"{
 type=list(string)
 }
