@@ -115,7 +115,7 @@ resource "aws_security_group" "private_subnet_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = var.sshdr
+    cidr_blocks = var.ssh_block
   }
 
   // Outbound rule allowing all traffic
