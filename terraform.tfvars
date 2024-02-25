@@ -13,5 +13,5 @@ priname= ["ninja-pri-sub-01", "ninja-pri-sub-02"]
 am="ami-0a7cf821b91bcccbc"
 #gateway name
 gateway_name = "ninja-igw-01"
-
+bastionuser=ubuntu
 all=["0.0.0.0/0"]
