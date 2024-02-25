@@ -129,6 +129,7 @@ resource "local_file" "hosts" {
   content = templatefile("inventory.tmpl",
     {
       ubuntu_hosts = module.ec2.ips
+      bastion_hosts= module.ec2.bips
     }
   )
   filename = "./inventory.yml"
