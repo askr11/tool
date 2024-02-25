@@ -75,7 +75,7 @@ resource "local_file" "tf-key" {
 }
 resource "null_resource" "change_permissions" {
   provisioner "local-exec" {
-    command = "chmod 400 ./keyins.pem"
+    command = "chmod 600 ./keyins.pem"
   }
   depends_on = [local_file.tf-key]
 }
