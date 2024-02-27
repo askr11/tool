@@ -96,8 +96,8 @@ resource "aws_security_group" "allow_all" {
 
  ingress {
 
-    from_port   = -1
-    to_port     = -1
+    from_port   = 0
+    to_port     = 65535
     protocol    = "tcp"
     cidr_blocks = var.jenkins_cidr_block
    
@@ -129,8 +129,8 @@ resource "aws_security_group" "private_subnet_sg" {
   }
  ingress {
 
-    from_port   = -1
-    to_port     = -1
+    from_port   = 0
+    to_port     = 0
     protocol    = "tcp"
     cidr_blocks = var.jenkins_cidr_block
    
