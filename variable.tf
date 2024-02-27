@@ -41,7 +41,9 @@ variable "sshdr"{
 variable "bastionuser"{
 type=string
 }
-
+variable "vpc_jenkins_server"{
+type=string
+}
 variable "avail_zone"{
 type=list(string)
 }
