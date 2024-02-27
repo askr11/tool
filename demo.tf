@@ -138,7 +138,7 @@ resource "local_file" "hosts" {
 }
 
 resource "aws_vpc_peering_connection" "peering_connection" {
-  vpc_id      = "vpc-0cfe589c876fb2ff6"
+  vpc_id      = var.vpc_jenkins_server
   peer_vpc_id = module.vpc2.vpc-id
   auto_accept = true
   accepter {
