@@ -154,9 +154,9 @@ resource "aws_vpc_peering_connection" "peering_connection" {
 }
 
 # Associate the peering connection with a route table in VPC1
-resource "aws_route" "route_to_peer" {
-  route_table_id            = "rtb-082eddd97ecc7a43c"
-  destination_cidr_block    = "10.8.0.0/16"
+resource "aws_route" "route_to_jenkins" {
+  route_table_id            = "rtb-0802d10d58fa868f4"
+  destination_cidr_block    = "10.0.0.0/16"
   vpc_peering_connection_id = aws_vpc_peering_connection.peering_connection.id
 }
 
