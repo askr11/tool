@@ -99,7 +99,7 @@ resource "aws_security_group" "allow_all" {
     from_port   = -1
     to_port     = -1
     protocol    = "tcp"
-    cidr_blocks = var.jenkins_cidr
+    cidr_blocks = var.jenkins_cidr_block
    
 
   }
@@ -132,7 +132,7 @@ resource "aws_security_group" "private_subnet_sg" {
     from_port   = -1
     to_port     = -1
     protocol    = "tcp"
-    cidr_blocks = var.jenkins_cidr
+    cidr_blocks = var.jenkins_cidr_block
    
 
   }
