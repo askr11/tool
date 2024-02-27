@@ -44,6 +44,12 @@ type=string
 variable "vpc_jenkins_server"{
 type=string
 }
+variable "jenkins_route_table"{
+type=string
+}
 variable "avail_zone"{
 type=list(string)
+}
+variable "jenkins_cidr"{
+type=string
 }
