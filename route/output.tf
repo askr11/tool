@@ -1,3 +1,3 @@
 output "private_route_table"{
-value=
+value=aws_route_table.private.id
 }
