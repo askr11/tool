@@ -51,5 +51,8 @@ variable "avail_zone"{
 type=list(string)
 }
 variable "jenkins_cidr"{
+type= string
+}
+variable "jenkins_cidr_block"{
 type= list(string)
 }
