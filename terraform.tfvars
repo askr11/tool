@@ -15,3 +15,4 @@ am="ami-0a7cf821b91bcccbc"
 gateway_name = "ninja-igw-01"
 bastionuser="ubuntu"
 all=["0.0.0.0/0"]
+vpc_jenkins_server="vpc-0e72133ab6ab16bd0"
