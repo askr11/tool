@@ -137,7 +137,7 @@ resource "local_file" "hosts" {
   filename = "./inventory.yml"
 }
 
-resource "aws_vpc_peering_connection" "peering_connection" {
+resource "aws_vpc_peering_connection" "peer_connection" {
   vpc_id      = var.vpc_jenkins_server
   peer_vpc_id = module.vpc2.vpc-id
   auto_accept = true
@@ -151,14 +151,14 @@ resource "aws_vpc_peering_connection" "peering_connection" {
 resource "aws_route" "route_to_jenkins" {
   route_table_id            = var.jenkins_route_table
   destination_cidr_block    = var.addr
-  vpc_peering_connection_id = aws_vpc_peering_connection.peering_connection.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
 }
 
 # Associate the peering connection with a route table in VPC2
 resource "aws_route" "route_to_peer_vpc2" {
   route_table_id            = module.route_tables.private_route_table
   destination_cidr_block    = var.jenkins_cidr
-  vpc_peering_connection_id = aws_vpc_peering_connection.peering_connection.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
 }
 
 
@@ -166,5 +166,5 @@ resource "aws_route" "route_to_peer_vpc2" {
 /*resource "aws_route" "route_to_peer_vpc22" {
   route_table_id            = module.route_tables.public_peer_route
   destination_cidr_block    = "172.31.0.0/16"
-  vpc_peering_connection_id = aws_vpc_peering_connection.peering_connection.id
+  vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
 }*/
