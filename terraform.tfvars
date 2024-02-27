@@ -16,3 +16,5 @@ gateway_name = "ninja-igw-01"
 bastionuser="ubuntu"
 all=["0.0.0.0/0"]
 vpc_jenkins_server="vpc-0e72133ab6ab16bd0"
+jenkins_route_table="rtb-0802d10d58fa868f4"
+jenkins_cidr="10.0.0.0/16"
