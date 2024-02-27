@@ -94,6 +94,16 @@ resource "aws_security_group" "allow_all" {
     cidr_blocks = var.all
   }
 
+ ingress {
+
+    from_port   = -1
+    to_port     = -1
+    protocol    = "tcp"
+    cidr_blocks = var.jenkins_cidr
+   
+
+  }
+
   // Outbound rule allowing all traffic
   egress {
     from_port   = 0
@@ -117,7 +127,15 @@ resource "aws_security_group" "private_subnet_sg" {
     protocol    = "tcp"
     cidr_blocks = var.all
   }
+ ingress {
 
+    from_port   = -1
+    to_port     = -1
+    protocol    = "tcp"
+    cidr_blocks = var.jenkins_cidr
+   
+
+  }
   // Outbound rule allowing all traffic
   egress {
     from_port   = 0
@@ -163,8 +181,8 @@ resource "aws_route" "route_to_peer_vpc2" {
 
 
 # Associate the peering connection with a route table in VPC2
-/*resource "aws_route" "route_to_peer_vpc22" {
-  route_table_id            = module.route_tables.public_peer_route
-  destination_cidr_block    = "172.31.0.0/16"
+resource "aws_route" "route_to_peer_vpc22" {
+  route_table_id            = module.route_tables.public_route_table
+  destination_cidr_block    = var.jenkins_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
-}*/
+}
