@@ -141,15 +141,9 @@ resource "aws_vpc_peering_connection" "peering_connection" {
   vpc_id      = var.vpc_jenkins_server
   peer_vpc_id = module.vpc2.vpc-id
   auto_accept = true
-  accepter {
-    allow_remote_vpc_dns_resolution = true
-  }
-
-  requester {
-    allow_remote_vpc_dns_resolution = true
-  }
+ 
   tags = {
-    Name = "peering_connection"
+    Name = "peer-connection"
   }
 }
 
@@ -162,7 +156,7 @@ resource "aws_route" "route_to_jenkins" {
 
 # Associate the peering connection with a route table in VPC2
 resource "aws_route" "route_to_peer_vpc2" {
-  route_table_id            = module.route_tables.private_peer_route
+  route_table_id            = module.route_tables.private_route_table
   destination_cidr_block    = var.jenkins_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peering_connection.id
 }
