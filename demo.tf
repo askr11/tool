@@ -155,7 +155,7 @@ resource "local_file" "hosts" {
   filename = "./inventory.yml"
 }
 
-/*resource "aws_vpc_peering_connection" "peer_connection" {
+resource "aws_vpc_peering_connection" "peer_connection" {
   vpc_id      = var.vpc_jenkins_server
   peer_vpc_id = module.vpc2.vpc-id
   auto_accept = true
@@ -186,4 +186,4 @@ resource "aws_route" "route_to_peer_vpc22" {
   destination_cidr_block    = var.jenkins_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
 }
-*/
+
