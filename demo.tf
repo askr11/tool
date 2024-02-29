@@ -96,8 +96,8 @@ resource "aws_security_group" "allow_all" {
 
  ingress {
 
-    from_port   = 0
-    to_port     = 65535
+    from_port   = "-1"
+    to_port     = "-1"
     protocol    = "icmp"
     cidr_blocks = var.jenkins_cidr_block
    
