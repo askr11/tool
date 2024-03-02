@@ -1,15 +1,4 @@
 
-/*resource "aws_vpc" "batch24" {
-  cidr_block="10.0.0.0/16"
-}*/
-/*resource "aws_subnet" "main" {
-  vpc_id     = aws_vpc.batch24.id
-  cidr_block = var.subnet_cidr
-
-  tags = {
-    Name = "Main"
-  }
-}*/
 module "vpc2"{
   source= "./vpc"
   cidr= var.addr
@@ -144,7 +133,7 @@ resource "aws_security_group" "private_subnet_sg" {
     cidr_blocks = var.all
   }
 }
-/*resource "local_file" "hosts" {
+resource "local_file" "hosts" {
   content = templatefile("inventory.tmpl",
     {
       ubuntu_hosts = module.ec2.ips
@@ -153,7 +142,7 @@ resource "aws_security_group" "private_subnet_sg" {
     }
   )
   filename = "./inventory.yml"
-}*/
+}
 
 resource "aws_vpc_peering_connection" "peer_connection" {
   vpc_id      = var.vpc_jenkins_server
