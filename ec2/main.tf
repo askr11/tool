@@ -7,7 +7,7 @@
     subnet_id=var.publ_subnet[count.index]
     associate_public_ip_address = true
     tags = {
-    Name = "bastion[count.index]"
+    Name = "bastion${count.index+1}"
   }
  /*provisioner "file" {
     source      = "/var/lib/jenkins/workspace/tool/keyins.pem"  # Update with the path to your local PEM key file
@@ -26,6 +26,6 @@
     subnet_id=var.priv_subnet[count.index]
     associate_public_ip_address = false
     tags = {
-    Name = "private$[count.index]"
+    Name = "private${count.index+1}"
   }
   }
