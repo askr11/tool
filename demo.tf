@@ -20,7 +20,7 @@ module "subnet"{
   source= "./subnet"
   len=length(var.sdr)
   az=var.avail_zone
-  vpcid=module.vpc2.vpc-id
+  vpcid=var.vpc2id
   pub_subnet-cidr=var.sdr
   pri_subnet-cidr=var.pdr
   prinaam = var.priname
@@ -29,7 +29,7 @@ module "subnet"{
 
 module "gateway" {
   source="./igw"
-  id_vpc=module.vpc2.vpc-id
+  id_vpc=var.vpc2id
   igw_name=var.gateway_name
 }
 
@@ -41,7 +41,7 @@ module "nat" {
 }
 module "route_tables" {
   source                   = "./route"
-  vpc_id                   = module.vpc2.vpc-id
+  vpc_id                   = var.vpc2id
   public_subnet_ids        = module.subnet.subnet-id
   private_subnet_ids       = module.subnet.prisubnet-id
   internet_gateway_id      = module.gateway.gw_id
@@ -84,7 +84,7 @@ resource "aws_security_group" "allow_all" {
   description = "Allow all traffic"
   
   // VPC ID where you want to create the security group
-  vpc_id = module.vpc2.vpc-id
+  vpc_id = var.vpc2id
 
   // Inbound rule allowing all traffic
   ingress {
@@ -118,7 +118,7 @@ resource "aws_security_group" "private_subnet_sg" {
   description = "only ssh access"
   
   // VPC ID where you want to create the security group
-  vpc_id = module.vpc2.vpc-id
+  vpc_id = var.vpc2id
 
   // Inbound rule allowing all traffic
   ingress {
@@ -155,7 +155,7 @@ resource "local_file" "hosts" {
   filename = "./inventory.yml"
 }
 
-resource "aws_vpc_peering_connection" "peer_connection" {
+/*resource "aws_vpc_peering_connection" "peer_connection" {
   vpc_id      = var.vpc_jenkins_server
   peer_vpc_id = module.vpc2.vpc-id
   auto_accept = true
@@ -187,3 +187,4 @@ resource "aws_route" "route_to_peer_vpc22" {
   vpc_peering_connection_id = aws_vpc_peering_connection.peer_connection.id
 }
 
+*/
