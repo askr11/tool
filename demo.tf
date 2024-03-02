@@ -10,17 +10,17 @@
     Name = "Main"
   }
 }*/
-/*module "vpc2"{
+module "vpc2"{
   source= "./vpc"
   cidr= var.addr
 name=var.nam 
-}*/
+}
 
 module "subnet"{
   source= "./subnet"
   len=length(var.sdr)
   az=var.avail_zone
-  vpcid=var.vpc2id
+  vpcid=module.vpc2.vpc-id
   pub_subnet-cidr=var.sdr
   pri_subnet-cidr=var.pdr
   prinaam = var.priname
@@ -29,7 +29,7 @@ module "subnet"{
 
 module "gateway" {
   source="./igw"
-  id_vpc=var.vpc2id
+  id_vpc=module.vpc2.vpc-id
   igw_name=var.gateway_name
 }
 
@@ -41,7 +41,7 @@ module "nat" {
 }
 module "route_tables" {
   source                   = "./route"
-  vpc_id                   = var.vpc2id
+  vpc_id                   = module.vpc2.vpc-id
   public_subnet_ids        = module.subnet.subnet-id
   private_subnet_ids       = module.subnet.prisubnet-id
   internet_gateway_id      = module.gateway.gw_id
@@ -84,7 +84,7 @@ resource "aws_security_group" "allow_all" {
   description = "Allow all traffic"
   
   // VPC ID where you want to create the security group
-  vpc_id = var.vpc2id
+  vpc_id = module.vpc2.vpc-id
 
   // Inbound rule allowing all traffic
   ingress {
@@ -118,7 +118,7 @@ resource "aws_security_group" "private_subnet_sg" {
   description = "only ssh access"
   
   // VPC ID where you want to create the security group
-  vpc_id = var.vpc2id
+  vpc_id = module.vpc2.vpc-id
 
   // Inbound rule allowing all traffic
   ingress {
