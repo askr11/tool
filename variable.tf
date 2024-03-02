@@ -22,7 +22,9 @@ variable "priname"{
 variable "pdr"{
     type=list(string)
 }
-
+variable "vpc2id"{
+type=string
+}
 variable "am"{
     type=string
 }
