@@ -6,7 +6,7 @@ nam="ninja-vpc-01"
 subnet_name= ["ninja-pub-sub-01", "ninja-pub-sub-02"]
 avail_zone=["ap-south-1a", "ap-south-1b"]
 #private cidr block
-pdr=["10.8.0.0/25", "10.8.0.128/25"] 
+pdr=["10.0.0.0/25", "10.0.0.128/25"] 
 #private subnet name
 priname= ["ninja-pri-sub-01", "ninja-pri-sub-02"]
 #ami id of instance
