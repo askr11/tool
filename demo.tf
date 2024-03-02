@@ -144,7 +144,7 @@ resource "aws_security_group" "private_subnet_sg" {
     cidr_blocks = var.all
   }
 }
-resource "local_file" "hosts" {
+/*resource "local_file" "hosts" {
   content = templatefile("inventory.tmpl",
     {
       ubuntu_hosts = module.ec2.ips
@@ -153,7 +153,7 @@ resource "local_file" "hosts" {
     }
   )
   filename = "./inventory.yml"
-}
+}*/
 
 resource "aws_vpc_peering_connection" "peer_connection" {
   vpc_id      = var.vpc_jenkins_server
