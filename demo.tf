@@ -10,11 +10,11 @@
     Name = "Main"
   }
 }*/
-module "vpc2"{
+/*module "vpc2"{
   source= "./vpc"
   cidr= var.addr
 name=var.nam 
-}
+}*/
 
 module "subnet"{
   source= "./subnet"
