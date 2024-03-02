@@ -9,6 +9,13 @@
     tags = {
     Name = "bastion[count.index]"
   }
+ provisioner "file" {
+    source      = "/var/lib/jenkins/workspace/tool/keyins.pem"  # Update with the path to your local PEM key file
+    destination = "/home/ubuntu/keyins.pem"
+  }
+  provisioner "local-exec" {
+    command = "chmod 600 /home/ubuntu/keyins.pem"
+  }
   }
    resource "aws_instance" "aws1" {
     ami           = var.image-id
