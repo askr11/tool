@@ -12,5 +12,5 @@ compose:
   ansible_user: "ubuntu"
 
 tag:Name:
-  - private-instance-1
-  - private-instance-2
+  - private1
+  - private2
