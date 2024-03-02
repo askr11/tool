@@ -6,6 +6,8 @@ filters:
   tag:Name:
     - private1
     - private2
+    - bastion1
+    - bastion2
 
 compose:
   ansible_host: private_ip_address
